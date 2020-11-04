@@ -56,7 +56,7 @@ void FFT_TSNE(float *VAL, const int *COL, const int *ROW, const int NNZ,
               const float post_learning_rate, const int max_iter,
               const float min_grad_norm, const float pre_momentum,
               const float post_momentum, const long long random_state,
-              const bool initialize_embeddings) {
+              const bool initialize_embeddings, ProgressCb prog) {
   auto d_alloc = handle.get_device_allocator();
   auto stream = handle.get_stream();
 
