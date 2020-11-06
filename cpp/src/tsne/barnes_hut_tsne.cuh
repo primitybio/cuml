@@ -16,11 +16,11 @@
 #pragma once
 
 #include <raft/cudart_utils.h>
+#include <cmath>
 #include <common/device_buffer.hpp>
 #include <cuml/common/logger.hpp>
 #include "barnes_hut_kernels.cuh"
 #include "utils.cuh"
-#include <cmath>
 
 namespace ML {
 namespace TSNE {
