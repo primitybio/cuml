@@ -290,7 +290,6 @@ void brute_force_knn(std::vector<float *> &input, std::vector<int> &sizes,
       raft::select_stream(userStream, internalStreams, n_int_streams, i);
 
     gpu_res.noTempMemory();
-    gpu_res.setCudaMallocWarning(false);
     gpu_res.setDefaultStream(device, stream);
 
     faiss::gpu::GpuDistanceParams args;
