@@ -42,7 +42,7 @@ void brute_force_knn(raft::handle_t &handle, std::vector<float *> &input,
 
   std::vector<cudaStream_t> int_streams = handle.get_internal_streams();
 
-  MLCommon::Selection::brute_force_knn(
+  MLCommon::Selection::brute_force_knn<int, int64_t>(
     input, sizes, D, search_items, n, res_I, res_D, k,
     handle.get_device_allocator(), handle.get_stream(), int_streams.data(),
     handle.get_num_internal_streams(), rowMajorIndex, rowMajorQuery, nullptr,
@@ -134,7 +134,7 @@ extern "C" cumlError_t knn_search(const cumlHandle_t handle, float **input,
 
   if (status == CUML_SUCCESS) {
     try {
-      MLCommon::Selection::brute_force_knn(
+      MLCommon::Selection::brute_force_knn<int, int64_t>(
         input_vec, sizes_vec, D, search_items, n, res_I, res_D, k,
         handle_ptr->get_device_allocator(), handle_ptr->get_stream(),
         int_streams.data(), handle_ptr->get_num_internal_streams(),

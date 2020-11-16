@@ -35,7 +35,7 @@ namespace TSNE {
  * @param[in] d_alloc: device allocator
  * @param[in] stream: The GPU stream.
  */
-void get_distances(const float *X, const int n, const int p, long *indices,
+void get_distances(const float *X, const int n, const int p, int *indices,
                    float *distances, const int n_neighbors,
                    std::shared_ptr<deviceAllocator> d_alloc,
                    cudaStream_t stream) {
@@ -90,7 +90,7 @@ void normalize_distances(const int n, float *distances, const int n_neighbors,
  * @param[in] stream: The GPU stream.
  * @param[in] handle: The GPU handle.
  */
-void symmetrize_perplexity(float *P, long *indices, const int n, const int k,
+void symmetrize_perplexity(float *P, int *indices, const int n, const int k,
                            MLCommon::Sparse::COO<float> *COO_Matrix,
                            cudaStream_t stream, const raft::handle_t &handle) {
   // Perform (P + P.T) / P_sum

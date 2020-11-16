@@ -833,7 +833,7 @@ void coo_symmetrize(COO<T> *in, COO<T> *out,
  */
 template <typename math_t>
 __global__ static void symmetric_find_size(const math_t *restrict data,
-                                           const long *restrict indices,
+                                           const int *restrict indices,
                                            const int n, const int k,
                                            int *restrict row_sizes,
                                            int *restrict row_sizes2) {
@@ -882,7 +882,7 @@ __global__ static void reduce_find_size(const int n, const int k,
 template <typename math_t>
 __global__ static void symmetric_sum(int *restrict edges,
                                      const math_t *restrict data,
-                                     const long *restrict indices,
+                                     const int *restrict indices,
                                      math_t *restrict VAL, int *restrict COL,
                                      int *restrict ROW, const int n,
                                      const int k) {
@@ -922,7 +922,7 @@ __global__ static void symmetric_sum(int *restrict edges,
  * @param d_alloc device allocator for temporary buffers
  */
 template <typename math_t, int TPB_X = 32, int TPB_Y = 32>
-void from_knn_symmetrize_matrix(const long *restrict knn_indices,
+void from_knn_symmetrize_matrix(const int *restrict knn_indices,
                                 const math_t *restrict knn_dists, const int n,
                                 const int k, COO<math_t> *out,
                                 cudaStream_t stream,

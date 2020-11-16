@@ -78,7 +78,7 @@ void TSNE_fit(const raft::handle_t &handle, const float *X, float *Y,
     prog(100.f * 1 / (max_iter + 3),
          "Calculating distances…");
   MLCommon::device_buffer<float> distances(d_alloc, stream, n * n_neighbors);
-  MLCommon::device_buffer<long> indices(d_alloc, stream, n * n_neighbors);
+  MLCommon::device_buffer<int> indices(d_alloc, stream, n * n_neighbors);
   TSNE::get_distances(X, n, p, indices.data(), distances.data(), n_neighbors,
                       d_alloc, stream);
   //---------------------------------------------------
